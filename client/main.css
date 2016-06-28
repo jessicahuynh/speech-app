@@ -1,0 +1,23 @@
+
+/*header*/
+nav.top-nav {
+    height: 122px;
+    box-shadow: none;
+}
+
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+	text-align:center;
+}
+
+nav.top-nav a {
+    line-height: 122px;
+    font-size: 48px;
+}
+
+/*navigation*/
+.table-of-contents {
+	position:fixed;
+}
+

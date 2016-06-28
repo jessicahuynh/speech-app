@@ -1,0 +1,68 @@
+<head>
+  <title>Speech App</title>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <header>
+    <nav class="top-nav">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="page-title">Speech App</a>
+        </div>
+      </div>
+    </nav>
+
+    
+  </header>
+  
+
+
+  <div class="container main">
+
+    <div class="row">
+
+      <div class="col hide-on-small-only m3 l2">
+        {{ > navigation }}
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col s12 m8 l9 offset-m4 offset-l3">
+        <section id="prereqs" class="section scrollspy">
+          <h2>Prerequisities</h2>
+        </section>
+
+        <section id="speechreco" class="section scrollspy">
+          {{> speechreco}}
+        </section>
+
+        <section id="tts" class="section scrollspy">
+          <h2>Speech synthesis</h2>
+        </section>
+
+        <section id="nlu" class="section scrollspy">
+          <h2>Natural Language Understanding</h2>
+        </section>
+      </div>    
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+</body>
+
+<template name="navigation">
+  <ul class="section table-of-contents">
+    <li><a href="#prereqs">Prerequisites</a></li>
+    <li><a href="#speechreco">Speech recognition</a></li>
+    <li><a href="#tts">Speech synthesis</a></li>
+    <li><a href="#nlu">NLU</a></li>
+  </ul>
+</template>
