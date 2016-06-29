@@ -1,0 +1,10 @@
+canvas { 
+	display: inline-block; 
+	background: #202020; 
+	width: 95%;
+	height: 25%;
+}
+
+.mic, .save {
+	margin:auto 0;
+}
