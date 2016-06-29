@@ -5,6 +5,6 @@ canvas {
 	height: 25%;
 }
 
-.mic, .save {
-	margin:auto 0;
+#record.recording {
+	color:#ee0729;
 }

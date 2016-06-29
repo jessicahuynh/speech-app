@@ -3,10 +3,14 @@ Template.captureaudio.onCreated(function initAudioContext() {
 });
 
 Template.captureaudio.events({
-	'click .mic'(event,instance) {
+	'click #record'(event,instance) {
 		event.preventDefault();
-		toggleRecording(this);
+		toggleRecording(document.getElementById("record"));
 	},
+    'click #save'(event,instance) {
+        event.preventDefault();
+        saveAudio();
+    }
 });
 
 /* Copyright 2013 Chris Wilson
@@ -50,7 +54,7 @@ function saveAudio() {
 
 function gotBuffers( buffers ) {
     var canvas = document.getElementById( "wavedisplay" );
-
+    console.log('wav');
     drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 
     // the ONLY time gotBuffers is called is right after a new recording is completed - 
