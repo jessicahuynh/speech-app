@@ -6,6 +6,7 @@ import './main.html';
 Template.navigation.onRendered(function() {
   $(document).ready(function(){
     $('.scrollspy').scrollSpy();
+    $("#sticky").sticky({topSpacing:0});
   });
 });
 

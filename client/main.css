@@ -1,8 +1,22 @@
+/*general*/
+a:hover {
+    text-decoration:underline;
+}
+
+section.scrollspy:not(:first-child) {
+    border-top:1px solid #757575;
+}
+
+code {
+    color: #ea4a4f;
+    background-color:#eee;
+}
 
 /*header*/
 nav.top-nav {
     height: 122px;
     box-shadow: none;
+    overflow: visible;
 }
 
 nav .nav-wrapper {
@@ -17,7 +31,7 @@ nav.top-nav a {
 }
 
 /*navigation*/
-.table-of-contents {
-	position:fixed;
+.table-of-contents a:hover {
+    text-decoration:none;
 }
 

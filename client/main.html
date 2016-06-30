@@ -11,7 +11,7 @@
     <nav class="top-nav">
       <div class="container">
         <div class="nav-wrapper">
-          <a href="#" class="page-title">Speech App</a>
+          <a href="#" class="page-title"><span class="hide-on-med-and-down">The World&rsquo;s Greatest </span>Speech App</a>
         </div>
       </div>
     </nav>
@@ -21,19 +21,15 @@
   
 
 
-  <div class="container main">
+  <main class="container">
 
     <div class="row">
 
-      <div class="col hide-on-small-only m3 l2">
-        {{ > navigation }}
+      <div class="col hide-on-small-only m4 l3">
+      {{ > navigation }}
       </div>
 
-    </div>
-
-    <div class="row">
-
-      <div class="col s12 m8 l9 offset-m4 offset-l3">
+      <div class="col s12 m8 l9">
         <section id="prereqs" class="section scrollspy">
           <h2>Prerequisities</h2>
         </section>
@@ -57,17 +53,42 @@
 
     </div>
 
-  </div>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 m6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">The repository for this app is at <a href="https://github.com/jessicahuynh/speech-app" class="grey-text text-lighten-3">https://github.com/jessicahuynh/speech-app</a>.</p>
+        </div>
+
+        <div class="col l6 m6 s12">
+          <h5 class="white-text">Useful links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">More on getUserMedia()</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; Jessica Huynh
+      </div>
+    </div>
+  </footer>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 </body>
 
 <template name="navigation">
-  <ul class="section table-of-contents">
-    <li><a href="#prereqs">Prerequisites</a></li>
-    <li><a href="#captureaudio">Capturing audio</a></li>
-    <li><a href="#speechreco">Speech recognition</a></li>
-    <li><a href="#tts">Speech synthesis</a></li>
-    <li><a href="#nlu">Natural language<br>understanding</a></li>
-  </ul>
+  <aside id="sticky">
+    <ul class="section table-of-contents">
+      <li><a href="#prereqs">Prerequisites</a></li>
+      <li><a href="#captureaudio">Capturing audio</a></li>
+      <li><a href="#speechreco">Speech recognition</a></li>
+      <li><a href="#tts">Speech synthesis</a></li>
+      <li><a href="#nlu">Natural language<br>understanding</a></li>
+    </ul>
+  </aside>
 </template>

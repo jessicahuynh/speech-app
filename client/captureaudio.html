@@ -1,6 +1,6 @@
 <template name="captureaudio">
 <h2>Capturing audio</h2>
-<p>Adapted from the <a href="https://webaudiodemos.appspot.com/AudioRecorder/index.html">AudioRecorder</a> demo.</p>
+<p class="flow-text">Adapted from the <a href="https://webaudiodemos.appspot.com/AudioRecorder/index.html">AudioRecorder</a> demo. This demo should, after you accept access to the microphone, show an audio analyzer in the first box. After you record using the microphone, the waveform of the recording should appear in the second box with the save icon lighting up, allowing you to download a WAV file with the recorded audio.</p>
 
 <div class="row">
 	<div class="col s2 m1 l1">
@@ -21,5 +21,16 @@
 		<div id="viz"><canvas id="wavedisplay" width="1000" height="500"></canvas></div>
 	</div>
 </div>
+
+<h3>Required</h3>
+<ul class="browser-default">
+	<li><code>client/compatibilty/recorder.js</code></li>
+	<li><code>public/recorderWorker.js</code></li>
+	<li>functions in <code>client/captureaudio.js</code></li>
+	<li><code>captureaudio.html</code></li>
+</ul>
+
+<h3>How it works</h3>
+<p class="flow-text">Anything in the <code>client/compatibility</code> folder is loaded before all other files on the client-side.</p>
 
 </template>
