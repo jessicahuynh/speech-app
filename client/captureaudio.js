@@ -9,7 +9,6 @@ Template.captureaudio.events({
 	},
     'click #save'(event,instance) {
         event.preventDefault();
-        saveAudio();
     }
 });
 
@@ -54,12 +53,32 @@ function saveAudio() {
 
 function gotBuffers( buffers ) {
     var canvas = document.getElementById( "wavedisplay" );
-    console.log('wav');
+    
     drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 
     // the ONLY time gotBuffers is called is right after a new recording is completed - 
     // so here's where we should set up the download.
     audioRecorder.exportWAV( doneEncoding );
+    document.getElementById('save').classList.remove('buffering');
+}
+
+function drawBuffer( width, height, context, data ) {
+    var step = Math.ceil( data.length / width );
+    var amp = height / 2;
+    context.fillStyle = "silver";
+    context.clearRect(0,0,width,height);
+    for(var i=0; i < width; i++){
+        var min = 1.0;
+        var max = -1.0;
+        for (j=0; j<step; j++) {
+            var datum = data[(i*step)+j]; 
+            if (datum < min)
+                min = datum;
+            if (datum > max)
+                max = datum;
+        }
+        context.fillRect(i,(1+min)*amp,1,Math.max(1,(max-min)*amp));
+    }
 }
 
 function doneEncoding( blob ) {
@@ -78,6 +97,8 @@ function toggleRecording( e ) {
         if (!audioRecorder)
             return;
         e.classList.add("recording");
+        document.getElementById('save').classList.add('buffering');
+
         audioRecorder.clear();
         audioRecorder.record();
     }

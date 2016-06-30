@@ -74,7 +74,7 @@ DEALINGS IN THE SOFTWARE.
 
     this.getBuffers = function(cb) {
       currCallback = cb || config.callback;
-      worker.postMessage({ command: 'getBuffers' })
+      worker.postMessage({ command: 'getBuffers' });
     }
 
     this.exportWAV = function(cb, type){

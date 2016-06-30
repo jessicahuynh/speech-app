@@ -8,3 +8,7 @@ canvas {
 #record.recording {
 	color:#ee0729;
 }
+
+#save.buffering {
+	color:#ccc;
+}
