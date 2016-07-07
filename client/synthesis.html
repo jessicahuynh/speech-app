@@ -1,0 +1,33 @@
+<template name="synthesis">
+<h2>Speech synthesis</h2>
+
+
+<h3>HTML5 speech synthesis</h3>
+<p class="flow-text">Speech synthesis in the browser relies on the presence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance">SpeechSynthesisUtterance</a>, so you need to do a check to see if the browser supports it:</p>
+<pre><code>test</code></pre>
+
+<form id="html5-tts">
+	<div class="input-field">
+		<input id="html5-tts-field" type="text" placeholder="something to say">
+	</div>
+
+	<div class="row">
+
+		<div class="input-field col s12 m6 l6">
+			<select id="html5-voicelist">
+				<option value="" disabled selected>Choose a voice</option>
+			</select>
+		</div>
+
+		<div class="input-field col s12 m6 l6">
+			<button class="btn waves-effect waves-light" type="submit" id="html5-tts-submit">Speak
+				<i class="material-icons right">volume_up</i>
+			</button>
+		</div>
+	</div>
+	
+</form>
+
+<h3>Mashup</h3>
+
+</template>

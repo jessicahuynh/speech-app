@@ -23,7 +23,7 @@
 </div>
 
 <h3>Required</h3>
-<ul class="browser-default">
+<ul class="flow-text">
 	<li><code>client/compatibilty/recorder.js</code></li>
 	<li><code>public/recorderWorker.js</code></li>
 	<li>functions in <code>client/captureaudio.js</code></li>
@@ -32,5 +32,13 @@
 
 <h3>How it works</h3>
 <p class="flow-text">Anything in the <code>client/compatibility</code> folder is loaded before all other files on the client-side.</p>
+
+<p class="flow-text">There are two things to keep in mind:</p>
+<ol class="flow-text">
+	<li>Using <code>getUserMedia()</code> gives you access to the microphone</li>
+	<li>It's the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a> that lets you do things like display the analyzer, but it's not necessary if you just want to capture or stream audio</li>
+</ol>
+
+<blockquote class="flow-text">Don't try to be cute and rename function calls from <code>captureaudio.js</code> from &lsquo;analyser&rsquo; to &lsquo;analyzer&rsquo;&mdash;the Web Audio API uses the British spellings. 😁</blockquote>
 
 </template>
