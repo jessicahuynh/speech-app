@@ -48,7 +48,14 @@ Template.synthesis.events({
 	'submit #mashup-tts'(event,instance) {
 		event.preventDefault();
 
-		Meteor.call('mashupTTS', true, 'Pizza',$('.mashup-ssml-basic').html());
+		Meteor.call('mashupTTS', true, 'Pizza',$('.mashup-ssml-basic').html(),function(error,result) {
+			if (error) {
+				console.log(error);
+			}
+			else {
+				console.log(result);
+			}
+		});
 	}
 });
 
