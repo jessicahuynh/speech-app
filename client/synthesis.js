@@ -1,15 +1,13 @@
 Template.synthesis.onRendered(function() {
 	if (window.speechSynthesis) {
-		this.autorun(function() {
-			voices = window.speechSynthesis.getVoices();
+		voices = window.speechSynthesis.getVoices();
 
-			voices.forEach(function(voice, index) {
-				var $option = $('<option>')
-				.val(index)
-				.html(voice.name + (voice.default ? ' (browser default)' :''));
-				
-				$('#html5-voicelist').append($option);
-			});
+		voices.forEach(function(voice, index) {
+			var $option = $('<option>')
+			.val(index)
+			.html(voice.name + (voice.default ? ' (browser default)' :''));
+			
+			$('#html5-voicelist').append($option);
 		});
 		
 		// voices load asynchronously, so a quick and dirty hack is to set a small timer
@@ -27,16 +25,15 @@ Template.synthesis.onRendered(function() {
 
 
 Template.synthesis.events({
-	'click #html5-tts-submit'(event,instance) {
+	'submit #html5-tts'(event,instance) {
 		event.preventDefault();
 
 		var msg = new SpeechSynthesisUtterance();
-		var voices = window.speechSynthesis.getVoices();
 
-		msg.voice = voices[$('#html5-tts-field').val()];
 		msg.text = $('#html5-tts-field').val();
 		msg.rate = $('#html5-rate').val();
 		msg.pitch = $('#html5-pitch').val();
+		msg.voice = voices[$('#html5-voicelist').val()];
 		console.log(msg);
 
 		msg.onend = function(e) {
@@ -44,6 +41,14 @@ Template.synthesis.events({
 		};
 
 		speechSynthesis.speak(msg);
+	},
+	'keyup #mashup-text-field'(event,instance) {
+		$('.mashup-ssml-basic').html('&lt;speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"&gt;'+$('#mashup-text-field').val()+'&lt;/speak&gt;');
+	},
+	'submit #mashup-tts'(event,instance) {
+		event.preventDefault();
+
+		Meteor.call('mashupTTS', true, 'Pizza',$('.mashup-ssml-basic').html());
 	}
 });
 

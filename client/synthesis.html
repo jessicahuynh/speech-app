@@ -3,7 +3,10 @@
 
 
 <h3>HTML5 speech synthesis</h3>
+<p class="flow-text">HTML5 speech synthesis is good for quick and dirty testing, along with situations where you don't need fine-grained control over how something is said.</p>
+
 <p class="flow-text">Speech synthesis in the browser relies on the presence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance">SpeechSynthesisUtterance</a>, so you need to do a check to see if the browser supports it:</p>
+
 <pre><code>test</code></pre>
 
 <form id="html5-tts">
@@ -51,5 +54,35 @@
 </form>
 
 <h3>Mashup</h3>
+
+<h4>Basic</h4>
+<form id="mashup-tts">
+	<div class="input-field">
+		<textarea id="mashup-text-field" class="materialize-textarea" placeholder="Enter something for me to say!"></textarea>
+	</div>
+
+	<div class="card">
+    	<div class="card-content">
+			<span class="card-title">SSML sent up</span>
+			<div class="mashup-ssml-basic">
+				&lt;speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"&gt;&lt;/speak&gt;
+			</div>
+		</div>
+    </div>
+
+	<p>
+		<input type="checkbox" checked="checked" id="mashup-contains-ssml" class="filled-in" disabled="disabled">
+		<label for="mashup-contains-ssml">Request contains SSML</label>
+	</p>
+
+	<button class="btn waves-effect waves-light" type="submit" id="mashup-tts-submit">Speak
+		<i class="material-icons right">volume_up</i>
+	</button>
+</form>
+
+<h4>Advanced SSML</h4>
+
+
+<h3>Bing Speech API</h3>
 
 </template>
