@@ -51,10 +51,20 @@ Template.synthesis.events({
 		Meteor.call('mashupTTS', true, 'Pizza',$('.mashup-ssml-basic').html(),function(error,result) {
 			if (error) {
 				console.log(error);
+				return;
 			}
 			else {
-				console.log(result);
+				Meteor.call('convertAmrToMp3',result.content,function(error,result) {
+					if (error) {
+						console.log(error);
+						return;
+					}
+					else {
+						$('#mashup-tts-audio').attr('src',result.headers.location);
+					}
+				});
 			}
+			
 		});
 	}
 });

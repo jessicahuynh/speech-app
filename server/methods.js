@@ -4,31 +4,44 @@ Meteor.methods({
 
 	mashupTTS:function(containsSSML,appname,txt) {
 		
-		HTTP.call(
+		return HTTP.call(
 			"POST",
 			"https://service.interactions.net/smm/tts",
 			{
 				npmRequestOptions: {
-					rejectUnauthorized: false // TODO remove when deploy
+					rejectUnauthorized: false
 				},
 				headers: {
-					"Content-Type": "text/plain; charset=UTF-8"
+					"Content-Type": "text/plain"
 				},
 				content: txt.split('&lt;').join('<').split("&gt;").join('>'),
 				params: {
 					uuid:Meteor.settings.mashup.uuid,
 					ssml:containsSSML,
 					appname:appname,
+					audioFormat:"amr"
 				}
-			},
-			function(error,result) {
-				if (!error) {
-					return result;
+			}
+		);
+	},
+
+	convertAmrToMp3:function(amr) {
+		return HTTP.call(
+			"POST",
+			"https://api.cloudconvert.com/convert",
+			{
+				params: {
+					apikey:Meteor.settings.cloudconvert.key,
+					inputformat:"amr",
+					outputformat:"mp3",
+					input:"raw",
+					file:amr.replace(/%([^\d].)/, "%25$1"),
+					filename:"mashup.amr",
+					timeout:1000,
+					wait:true,
+					download:"true"
 				}
-				else {
-					console.log('An error occurred.');
-					console.log(error);
-				}
-			})
+			}
+		);
 	}
 });
