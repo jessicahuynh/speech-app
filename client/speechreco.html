@@ -3,6 +3,41 @@
 
 <h3>Mashup</h3>
 
+<h3>Webkit</h3>
+<form id="webkit-reco">
+	<div class="row">
+		<div class="col m6 s12">
+			<select id="webkit-lang" required>
+				<option disabled selected>Pick a language</option>
+			</select>
+		</div>
+
+		<div class="col m6 s12">
+			<select id="webkit-topolect">
+			</select>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s6">
+			<input type="checkbox" checked="checked" id="webkit-continuous" class="filled-in">
+			<label for="webkit-continuous">Continuous recognition</label>
+		</div>
+		<div class="col s6">
+			<input type="checkbox" checked="checked" id="webkit-interim" class="filled-in">
+			<label for="webkit-interim">Display interim results</label>
+		</div>
+	</div>
+	
+	<button class="btn waves-effect waves-light" type="submit" id="webkit-reco-submit">Speak
+		<i class="material-icons right">mic</i>
+	</button>
+
+	<div class="input-field">
+		<textarea id="webkit-reco-result" class="materialize-textarea" disabled placeholder="What you say shows up here"></textarea>
+	</div>
+</form>
+
 <h3>Bing Speech API</h3>
 
 <form id="bing-reco">
@@ -13,7 +48,7 @@
 	</select>
 
 	<button class="btn waves-effect waves-light" type="submit" id="bing-reco-submit">Speak
-		<i class="material-icons right">volume_up</i>
+		<i class="material-icons right">mic</i>
 	</button>
 
 	<div class="input-field">
