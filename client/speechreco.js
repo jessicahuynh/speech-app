@@ -17,11 +17,29 @@ Template.speechreco.events({
 		event.preventDefault();
 
 		var recognition = new webkitSpeechRecognition();
-		recognition.continuous = $('#webkit-continuous').val();
-		recognition.interimResults = $('#webkit-interim').val();
+		recognition.continuous = $('#webkit-continuous:checked').val();
+		recognition.interimResults = $('#webkit-interim:checked').val();
 		recognition.lang = $('#webkit-topolect').val();
 
-		console.log(recognition);
+		var final_transcript = '';
+		recognition.start();
+
+		recognition.onresult = function(event) {
+			var interim_transcript = '';
+
+			for (var i = event.resultIndex; i < event.results.length; ++i) {
+				if (event.results[i].isFinal) {
+					final_transcript += event.results[i][0].transcript;
+				} else {
+					interim_transcript += event.results[i][0].transcript;
+				}
+			}
+
+			final_transcript = capitalize(final_transcript);
+			$('#webkit-reco-result').val(linebreak(final_transcript));
+			//interim_span.innerHTML = linebreak(interim_transcript);
+		};
+		
 	},
 	'submit #bing-reco'(event,instance) {
         event.preventDefault();
@@ -165,4 +183,18 @@ function setTopolects(lang) {
 	}
 
 	$('select').material_select();
+}
+
+function capitalize(s) {
+	var first_char = /\S/;
+
+	return s.replace(first_char, function(m) { return m.toUpperCase(); });
+}
+
+
+function linebreak(s) {
+	var two_line = /\n\n/g;
+	var one_line = /\n/g;
+
+	return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
 }
