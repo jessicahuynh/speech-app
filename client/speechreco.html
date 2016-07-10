@@ -1,7 +1,24 @@
 <template name="speechreco">
 <h2>Speech recognition</h2>
 
-	<h3>Mashup</h3>
+<h3>Mashup</h3>
 
-	<h3>Bing Speech API</h3>
+<h3>Bing Speech API</h3>
+
+<form id="bing-reco">
+	<select id="bing-reco-mode" required>
+		<option value="0" disabled selected>Choose a mode</option>
+		<option value="shortPhrase">shortPhrase</option>
+		<option value="longDictation">longDictation</option>
+	</select>
+
+	<button class="btn waves-effect waves-light" type="submit" id="bing-reco-submit">Speak
+		<i class="material-icons right">volume_up</i>
+	</button>
+
+	<div class="input-field">
+		<textarea id="bing-reco-result" class="materialize-textarea" disabled placeholder="What you say shows up here"></textarea>
+	</div>
+
+</form>
 </template>

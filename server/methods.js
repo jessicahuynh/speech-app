@@ -43,5 +43,9 @@ Meteor.methods({
 				}
 			}
 		);
+	},
+
+	getBingKey:function() {
+		return Meteor.settings.bing.key;
 	}
 });

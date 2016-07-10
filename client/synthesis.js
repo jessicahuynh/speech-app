@@ -14,7 +14,7 @@ Template.synthesis.onRendered(function() {
 		// don't actually do this in your app
 		window.setTimeout(function() {
 			$('select').material_select();
-		},1000);
+		},2000);
 	}
 	else {
 		$('#html5-tts').html('<p>Your browser doesn\'t support HTML5 speech synthesis!</p>');
@@ -34,6 +34,7 @@ Template.synthesis.events({
 		msg.rate = $('#html5-rate').val();
 		msg.pitch = $('#html5-pitch').val();
 		msg.voice = voices[$('#html5-voicelist').val()];
+		msg.lang = $('#html5-langlist').val();
 		console.log(msg);
 
 		msg.onend = function(e) {
